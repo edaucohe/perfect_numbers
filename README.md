@@ -23,6 +23,10 @@
 
 "Perfect numbers script" aims to get perfect numbers in a number range.
 
+A **perfect number** is a positive integer that is equal to the sum of its positive divisors, 
+excluding the number itself. For instance, 6 has divisors 1, 2 and 3 (excluding itself).
+Because of 1 + 2 + 3 is equal to 6, number 6 is a perfect number.
+
 ### Context <a class="anchor" id="context"></a>
 
 Among the comments on a YT video about technical interviews, someone mentioned
@@ -48,9 +52,9 @@ To determine it, I implemented:
     for iterated_number in range(2, int(square_root_number) + 1):
         if (number % iterated_number) == 0:
 
-If condition is True, that means there is another number between 1 and the number
-we are evaluating and which divides our number. If not, the number we are evaluating is a 
-prime number.
+If condition is True, that means there is another number between 1 and the number that
+we are evaluating, and which divides our number. If not, the number that we are evaluating 
+is a prime number.
 
 This part of script implies a square root complexity O(n^1/2), that is a complexity 
 smaller than a linear O(n).
@@ -63,7 +67,8 @@ In conclusion, with this script we have a global complexity of O(n).
 
 NB : After reflexion, and given that loops of prime number condition are inside of while 
 loop, I think global complexity could be O(n^3/2) (if that is allowed as notation). 
-In any case, it's between quadratic complexity O(n^2) and linear complexity O(n). 
+In any case, **complexity of script is between quadratic complexity O(n^2) and linear 
+complexity O(n)**. 
 
 ## Installation <a class="anchor" id="installation"></a>
 
