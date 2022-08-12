@@ -104,8 +104,8 @@ To start script, go into the terminal and launch:
 python main.py
 ```
 
-There is not yet a navigation menu in order to input a number to evaluate. 
-So, it is needed to modify `NUMBER` constant to test others numbers.
+Script will display a navigation menu in order to get perfect numbers in the range of
+written number.
 
 ## Helpful links <a class="anchor" id="links"></a>
 
