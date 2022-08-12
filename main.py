@@ -8,31 +8,16 @@ Because of 1 + 2 + 3 is equal to 6, number 6 is a perfect number.
 
 """
 
-# I pretend to use algorithms to optimize the script.
-# In another way, it could have a lot of numbers to loop.
-
-# So, I will use Euclid-Euler theorem for this purpose.
+# In order to get perfect numbers, Euclid-Euler theorem is implemented.
 
 # Euclid-Euler theorem states that an even number is perfect
 # if, and only if, it has the form [2^(p-1)]*[2^(p)-1]
 # where "2^(p)-1" and "p" are prime numbers.
 
-from typing import List, Any
+from typing import List
 import math
 
-
-NUMBER: int = 30
-
-
-def is_integer_positive(number: Any):
-    try:
-        value: int = int(number)
-        assert value > 0
-        return value
-    except AssertionError:
-        print(f"Number {number} must be an integer positive.")
-    except ValueError:
-        print(f"Data '{number}' must be a number.")
+import views
 
 
 def is_prime_number(number: int) -> bool:
@@ -42,11 +27,11 @@ def is_prime_number(number: int) -> bool:
 
     # Because of factors of a number appears in pairs, the max product is founded
     # when factor a = factor b = square root of number. So we need just iterate
-    # until square root of number we are evaluating.
-    # NB: We have two factors because we use module "%" in "if" condition to know
-    # if an iterated number can divide the number that we are evaluating.
+    # until square root of number that we are evaluating.
     square_root_number = math.sqrt(number)
     for iterated_number in range(2, int(square_root_number) + 1):
+        # If iterated number cannot divide the number that we are evaluating,
+        # (number % iterated_number) == 0 is False and the number is a prime number.
         return False if (number % iterated_number) == 0 else True
 
 
@@ -74,16 +59,15 @@ def get_perfect_numbers(number: int) -> List[int]:
 
 
 def main():
-    positive_number = is_integer_positive(NUMBER)
+    run = True
+    while run:
+        number: int = views.enter_number()
+        perfect_numbers: List[int] = get_perfect_numbers(number=number)
+        views.display_perfect_numbers(number, perfect_numbers)
 
-    try:
-        perfect_numbers: List[int] = get_perfect_numbers(number=positive_number)
-        if perfect_numbers:
-            print(f"The list of perfect numbers smaller than {positive_number} is: {perfect_numbers}")
-        else:
-            print(f"There is no perfect numbers smaller than {positive_number}")
-    except TypeError:
-        print("In this case, script cannot get perfect numbers.")
+        yes_answer: bool = views.try_again()
+        if not yes_answer:
+            run = False
 
 
 if __name__ == "__main__":
